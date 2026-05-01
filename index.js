@@ -15,8 +15,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', msg => {
   if (msg.author.bot) return;
-  if (msg.content === '!ping') msg.reply('Pong! Jarves online 🏓');
-});
+  if (msg.content === '!ping') msg.reply('Pong! Jarves online 🏓');});
 
 client.login(process.env.TOKEN);
 
