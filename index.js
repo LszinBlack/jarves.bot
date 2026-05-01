@@ -2,44 +2,59 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const express = require('express');
 const app = express();
 
-const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
-});
-
 app.get('/', (req, res) => res.send('Jarves tá online!'));
 app.listen(3000, () => console.log('Servidor rodando'));
 
-client.on('ready', () => {
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
+  ]
+});
+
+client.on('clientReady', () => {
   console.log(`Jarves logado como ${client.user.tag}`);
 });
 
 client.on('messageCreate', msg => {
   if (msg.author.bot) return;
-  if (msg.content === '!ping') msg.reply('Pong! Jarves online 🏓');
+  
+  if (msg.content === '!ping') {
+    msg.reply('Pong! Jarves online 🎤');
+  }
 
-client.login(process.env.TOKEN);
+  // !jarves - Apresentação
+  if (msg.content === '!jarves') {
+    msg.reply('**Jarves Online** 🎤\nCriado pelo Lszin. Bot de utilidades, zoeira e finalizações. Digita `!comandos` pra ver meu arsenal.');
+  }
 
-// !jarves - Apresentação
-if (msg.content === '!jarves') {
-  msg.reply('**Jarves Online** 🎤\nCriado pelo Lszin. Bot de utilidades, zoeira e finalizações. Digita `!comandos` pra ver meu arsenal.');}
+  // !comandos - Lista atualizada
+  if (msg.content === '!comandos') {
+    msg.reply('**Arsenal do Jarves:**\n`!ping` - Teste de conexão\n`!jarves` - Quem sou eu\n`!sukuna` - Invoca o Rei das Maldições\n`!james` - Chama o brabo\n`!dado` - Rola D20\n`!ls` - Homenagem pro meu criador');
+  }
 
-// !comandos - Lista atualizada
-if (msg.content === '!comandos') {
-  msg.reply('**Arsenal do Jarves:**\n`!ping` - Teste de conexão\n`!jarves` - Quem sou eu\n`!sukuna` - Invoca o Rei das Maldições\n`!james` - Chama o brabo\n`!dado` - Rola D20\n`!ls` - Homenagem pro meu criador');}
+  // !sukuna - Finalização
+  if (msg.content === '!sukuna') {
+    msg.reply('**開 - Fuga** 👑\nRyomen Sukuna presente. Quem vai ser finalizado?');
+  }
 
-// !sukuna - Finalização
-if (msg.content === '!sukuna') {
-  msg.reply('**開 - Fuga** 👑\nRyomen Sukuna presente. Quem vai ser finalizado?');}
+  // !james - Menção honrosa
+  if (msg.content === '!james') {
+    msg.reply('James? O homem tá online e pronto pro rush 💪');
+  }
 
-// !james - Menção honrosa
-if (msg.content === '!james') {
-  msg.reply('James? O homem tá online e pronto pro rush 💪');}
+  // !ls - Teu comando
+  if (msg.content === '!ls') {
+    msg.reply('Lszin? O cara que me deu vida. Brabo demais, meteu um bot no ar sozinho 👑⚡');
+  }
 
-// !ls - Teu comando
-if (msg.content === '!ls') {
-  msg.reply('Lszin? O cara que me deu vida. Brabo demais, meteu um bot no ar sozinho 👑⚡');}
+  // !dado - D20
+  if (msg.content === '!dado') {
+    const num = Math.floor(Math.random() * 20) + 1;
+    msg.reply(`🎲 **${num}**\n${num === 20 ? 'CRÍTICO! SUKUNA FINALIZA' : num === 1 ? 'FALHA CRÍTICA KKK' : ''}`);
+  }
 
-// !dado - D20
-if (msg.content === '!dado') {
-  const num = Math.floor(Math.random() * 20) + 1;
-  msg.reply(`🎲 **${num}**\n${num === 20 ? 'CRÍTICO! SUKUNA FINALIZA' : num === 1 ? 'FALHA CRÍTICA KKK' : ''}`);}
+}); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
+
+client.login(process.env.TOKEN); 
