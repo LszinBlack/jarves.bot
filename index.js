@@ -36,8 +36,7 @@ if (msg.content === '!sukuna') {
 
 // !james - Menção honrosa
 if (msg.content === '!james') {
-  msg.reply('James? O homem tá online e pronto pro rush 💪');
-}
+  msg.reply('James? O homem tá online e pronto pro rush 💪');}
 
 // !ls - Teu comando
 if (msg.content === '!ls') {
