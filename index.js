@@ -40,8 +40,7 @@ if (msg.content === '!james') {
 
 // !ls - Teu comando
 if (msg.content === '!ls') {
-  msg.reply('Lszin? O cara que me deu vida. Brabo demais, meteu um bot no ar sozinho 👑⚡');
-}
+  msg.reply('Lszin? O cara que me deu vida. Brabo demais, meteu um bot no ar sozinho 👑⚡');}
 
 // !dado - D20
 if (msg.content === '!dado') {
