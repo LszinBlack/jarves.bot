@@ -32,8 +32,7 @@ if (msg.content === '!comandos') {
 
 // !sukuna - Finalização
 if (msg.content === '!sukuna') {
-  msg.reply('**開 - Fuga** 👑\nRyomen Sukuna presente. Quem vai ser finalizado?');
-}
+  msg.reply('**開 - Fuga** 👑\nRyomen Sukuna presente. Quem vai ser finalizado?');}
 
 // !james - Menção honrosa
 if (msg.content === '!james') {
