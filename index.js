@@ -139,8 +139,7 @@ if (msg.content.startsWith('!anime ')) {
     const gif = gifs[Math.floor(Math.random() * gifs.length)];
 
     // MANDA SÓ 1 VEZ, COM TEXTO + LINK DO GIF
-    await msg.reply(`${aleatoria}\n${gif}`);
-}
+    await msg.reply(`${aleatoria}\n${gif}`);}
 
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
 
