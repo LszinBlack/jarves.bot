@@ -133,6 +133,15 @@ if (msg.content.startsWith('!anive ')) {
     await msg.reply(aleatoria);
 }
 
+const gifs = [
+    'https://media.tenor.com/7QOK3JKGZgUAAAAC/anime-happy.gif',
+    'https://media.tenor.com/X5yYcUqC1WcAAAAC/naruto-dancing.gif',
+    'https://media.tenor.com/QhOah2-i2QMAAAAC/anime-celebrate.gif'
+];
+
+const gif = gifs[Math.floor(Math.random() * gifs.length)];
+await msg.reply({ content: aleatoria, files: [gif] });
+
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
 
 client.login(process.env.TOKEN); 
