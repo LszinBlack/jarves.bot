@@ -115,17 +115,17 @@ if (msg.content.startsWith('!figura ')) {
     }
 }
 
-// COMANDO!ANIME - PARABÉNS ANIME
-if (msg.content.startsWith('!anime ')) {
+// COMANDO!ANIVE PARABÉNS ANIVE 
+if (msg.content.startsWith('!anive ')) {
     const nome = msg.content.slice(7).trim();
-    if (!nome) return msg.reply('Fala o nome, LS: `!anime Lucas`');
+    if (!nome) return msg.reply('Fala o nome, LS: `!anive Lucas`');
 
     const frases = [
-        `Feliz anime **${nome}**! Que teu chakra nunca acabe! Meus parabéns! 🎉`,
-        `Feliz anime **${nome}**! Hoje tu upou de nível! Meus parabéns! ⭐`,
-        `Feliz anime **${nome}**! Que o poder do protagonismo esteja contigo! Meus parabéns! 💪`,
-        `**${nome}**-kun, feliz anime! Mais um ano pra se tornar o mais forte! Meus parabéns! 🔥`,
-        `Feliz anime **${nome}**! Que tu tenha loot lendário nesse novo ciclo! Meus parabéns! 🎁`
+        `Feliz aniversário **${nome}**! Que teu chakra nunca acabe! Meus parabéns! 🎉`,
+        `Feliz aniversário **${nome}**! Hoje tu upou de nível! Meus parabéns! ⭐`,
+        `Feliz aniversário **${nome}**! Que o poder do protagonismo esteja contigo! Meus parabéns! 💪`,
+        `**${nome}**-kun, feliz aniversário! Mais um ano pra se tornar o mais forte! Meus parabéns! 🔥`,
+        `Feliz aniversário **${nome}**! Que tu tenha loot lendário nesse novo ciclo! Meus parabéns! 🎁`
     ];
 
     const aleatoria = frases[Math.floor(Math.random() * frases.length)];
