@@ -56,17 +56,17 @@ if (msg.author.bot) return;
   }
 
 // COMANDO !IMG GRÁTIS - POLLINATIONS
-if (message.content.startsWith('!img ')) {
-    const prompt = message.content.slice(5);
-    if (!prompt) return message.reply('Manda o prompt, ex: `!img gato astronauta`');
+if (msg.content.startsWith('!img ')) {
+    const prompt = msg.content.slice(5);
+    if (!prompt) return msg.reply('Manda o prompt, ex: `!img gato astronauta`');
     
-    await message.channel.sendTyping();
+    await msg.channel.sendTyping();
     
     try {
         const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=1024&nologo=true`;
-        await message.reply(url);
+        await msg.reply(url);
     } catch (error) {
-        message.reply('Deu ruim pra gerar a imagem LS 😢');
+        msg.reply('Deu ruim pra gerar a imagem 😢');
         console.log(error);
     }
 }
