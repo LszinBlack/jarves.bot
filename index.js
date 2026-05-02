@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
 const express = require('express');
 const app = express();
 
@@ -55,21 +55,28 @@ if (msg.author.bot) return;
     msg.reply(`🎲 **${num}**\n${num === 20 ? 'CRÍTICO! SUKUNA FINALIZA' : num === 1 ? 'FALHA CRÍTICA KKK' : ''}`);
   }
 
-// COMANDO !IMG GRÁTIS - POLLINATIONS
+// COMANDO!IMG GRÁTIS - MANDA A IMAGEM
 if (msg.content.startsWith('!img ')) {
     const prompt = msg.content.slice(5);
     if (!prompt) return msg.reply('Manda o prompt, ex: `!img gato astronauta`');
-    
+
     await msg.channel.sendTyping();
-    
+
     try {
         const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=1024&nologo=true`;
-        await msg.reply(url);
+        
+        const response = await fetch(url);
+        const buffer = await response.arrayBuffer();
+        const attachment = new AttachmentBuilder(Buffer.from(buffer), { name: 'jarves.png' });
+
+        await msg.reply({ files: [attachment] });
+
     } catch (error) {
         msg.reply('Deu ruim pra gerar a imagem 😢');
         console.log(error);
     }
 }
+
 
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
 
