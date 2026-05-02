@@ -115,13 +115,13 @@ if (msg.content.startsWith('!figura ')) {
     }
 }
 
-// COMANDO!ANIVE - PARABÉNS ANIME
-if (msg.content.startsWith('!anive ')) {
+// COMANDO!ANIME - PARABÉNS ANIME
+if (msg.content.startsWith('!anime ')) {
     const nome = msg.content.slice(7).trim();
     if (!nome) return msg.reply('Fala o nome, LS: `!anime Lucas`');
 
     const frases = [
-        `Feliz aniversário **${nome}**! Que teu chakra nunca acabe! Meus parabéns! 🎉`,
+        `Feliz anime **${nome}**! Que teu chakra nunca acabe! Meus parabéns! 🎉`,
         `Feliz anime **${nome}**! Hoje tu upou de nível! Meus parabéns! ⭐`,
         `Feliz anime **${nome}**! Que o poder do protagonismo esteja contigo! Meus parabéns! 💪`,
         `**${nome}**-kun, feliz anime! Mais um ano pra se tornar o mais forte! Meus parabéns! 🔥`,
@@ -130,17 +130,17 @@ if (msg.content.startsWith('!anive ')) {
 
     const aleatoria = frases[Math.floor(Math.random() * frases.length)];
 
-    await msg.reply(aleatoria);
+    const gifs = [
+        'https://media.tenor.com/7QOK3JKGZgUAAAAC/anime-happy.gif',
+        'https://media.tenor.com/X5yYcUqC1WcAAAAC/naruto-dancing.gif',
+        'https://media.tenor.com/QhOah2-i2QMAAAAC/anime-celebrate.gif'
+    ];
+
+    const gif = gifs[Math.floor(Math.random() * gifs.length)];
+
+    // MANDA SÓ 1 VEZ, COM TEXTO + LINK DO GIF
+    await msg.reply(`${aleatoria}\n${gif}`);
 }
-
-const gifs = [
-    'https://media.tenor.com/7QOK3JKGZgUAAAAC/anime-happy.gif',
-    'https://media.tenor.com/X5yYcUqC1WcAAAAC/naruto-dancing.gif',
-    'https://media.tenor.com/QhOah2-i2QMAAAAC/anime-celebrate.gif'
-];
-
-const gif = gifs[Math.floor(Math.random() * gifs.length)];
-await msg.reply({ content: aleatoria, files: [gif] });
 
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
 
