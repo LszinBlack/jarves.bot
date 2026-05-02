@@ -126,6 +126,11 @@ if (msg.content.startsWith('!anive ')) {const nome = msg.content.slice(7).trim()
         `**${nome}**-kun, feliz aniversário! Mais um ano pra se tornar o mais forte! Meus parabéns! 🔥`,
         `Feliz aniversário **${nome}**! Que tu tenha loot lendário nesse novo ciclo! Meus parabéns! 🎁`];}
 
+    const aleatoria = frases[Math.floor(Math.random() * frases.length)];
+    
+    await msg.reply(aleatoria);
+}
+
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
 
 client.login(process.env.TOKEN); 
