@@ -54,38 +54,21 @@ if (msg.author.bot) return;
     const num = Math.floor(Math.random() * 20) + 1;
     msg.reply(`🎲 **${num}**\n${num === 20 ? 'CRÍTICO! SUKUNA FINALIZA' : num === 1 ? 'FALHA CRÍTICA KKK' : ''}`);
   }
-//!img - Gerar imagem com IA Grátis
-if (msg.content.startsWith('!img ')) {
-  const prompt = msg.content.slice(5).trim();
 
-  if (!prompt) {
-    return msg.reply('Manda o prompt né LS 😤\nEx: `!img sukuna rei das maldições anime style`');
-  }
-
-  const loadingMsg = await msg.channel.send('Calma aí LS... Jarves tá invocando a arte no Reino das Maldições 🎨👑');
-
-  try {
-    const axios = require('axios');
-    const response = await axios.post('https://api.craiyon.com/draw', {
-      prompt: prompt
-    }, {
-      timeout: 60000
-    });
-
-    const imageBase64 = response.data.images[0];
-    const buffer = Buffer.from(imageBase64, 'base64');
-
-    await loadingMsg.delete();
-    await msg.reply({
-      content: `**Prompt:** ${prompt}`,
-      files: [{ attachment: buffer, name: 'jarves_art.png' }]
-    });
-
-  } catch (error) {
-    await loadingMsg.delete();
-    console.log('Erro!img:', error);
-    msg.reply('Deu ruim pra gerar a imagem LS 😭\nAPI tá lenta ou prompt foi bloqueado. Tenta outro mais simples.');
-  }
+// COMANDO !IMG GRÁTIS - POLLINATIONS
+if (message.content.startsWith('!img ')) {
+    const prompt = message.content.slice(5);
+    if (!prompt) return message.reply('Manda o prompt, ex: `!img gato astronauta`');
+    
+    await message.channel.sendTyping();
+    
+    try {
+        const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=1024&nologo=true`;
+        await message.reply(url);
+    } catch (error) {
+        message.reply('Deu ruim pra gerar a imagem LS 😢');
+        console.log(error);
+    }
 }
 
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
