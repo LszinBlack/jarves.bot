@@ -132,7 +132,7 @@ if (msg.content.startsWith('!anive ')) {const nome = msg.content.slice(7).trim()
 }
 
 // COMANDO!ls - PERFIL DO USUÁRIO
-if (msg.content === '!Criador) {
+if (msg.content === '!Criador') {
     const user = msg.author;
     const member = msg.member;
 
