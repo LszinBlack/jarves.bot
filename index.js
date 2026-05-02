@@ -124,7 +124,7 @@ if (msg.content.startsWith('!anive ')) {const nome = msg.content.slice(7).trim()
         `Feliz aniversário **${nome}**! Hoje tu upou de nível! Meus parabéns! ⭐`,
         `Feliz aniversário **${nome}**! Que o poder do protagonismo esteja contigo! Meus parabéns! 💪`,
         `**${nome}**-kun, feliz aniversário! Mais um ano pra se tornar o mais forte! Meus parabéns! 🔥`,
-        `Feliz aniversário **${nome}**! Que tu tenha loot lendário nesse novo ciclo! Meus parabéns! 🎁`];}
+        `Feliz aniversário **${nome}**! Que tu tenha loot lendário nesse novo ciclo! Meus parabéns! 🎁`];
 
     const aleatoria = frases[Math.floor(Math.random() * frases.length)];
     
