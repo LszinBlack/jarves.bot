@@ -115,6 +115,24 @@ if (msg.content.startsWith('!figura ')) {
     }
 }
 
+// COMANDO!ANIVE - PARABÉNS ANIME
+if (msg.content.startsWith('!anive ')) {
+    const nome = msg.content.slice(7).trim();
+    if (!nome) return msg.reply('Fala o nome, LS: `!anime Lucas`');
+
+    const frases = [
+        `Feliz aniversário **${nome}**! Que teu chakra nunca acabe! Meus parabéns! 🎉`,
+        `Feliz anime **${nome}**! Hoje tu upou de nível! Meus parabéns! ⭐`,
+        `Feliz anime **${nome}**! Que o poder do protagonismo esteja contigo! Meus parabéns! 💪`,
+        `**${nome}**-kun, feliz anime! Mais um ano pra se tornar o mais forte! Meus parabéns! 🔥`,
+        `Feliz anime **${nome}**! Que tu tenha loot lendário nesse novo ciclo! Meus parabéns! 🎁`
+    ];
+
+    const aleatoria = frases[Math.floor(Math.random() * frases.length)];
+
+    await msg.reply(aleatoria);
+}
+
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
 
 client.login(process.env.TOKEN); 
