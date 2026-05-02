@@ -77,6 +77,43 @@ if (msg.content.startsWith('!img ')) {
     }
 }
 
+// COMANDO!FIGURA - GERA STICKER/FIGURINHA
+if (msg.content.startsWith('!figura ')) {
+    const prompt = msg.content.slice(8);
+    if (!prompt) return msg.reply('Descreve a figura: `!figura gato bravo meme`');
+
+    // FILTRO NSFW
+    const bloqueadas = ['nude', 'naked', 'sex', 'porn', 'hentai', 'nsfw'];
+    if (bloqueadas.some(palavra => prompt.toLowerCase().includes(palavra))) {
+        return msg.reply('Sem putaria nas figuras 😤');
+    }
+
+    await msg.channel.sendTyping();
+
+    try {
+        // PROMPT OTIMIZADO PRA STICKER: fundo transparente, estilo chibi/cartoon
+        const promptSticker = `${prompt}, sticker, chibi style, cartoon, transparent background, white outline, vector art`;
+        const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptSticker)}?width=512&height=512&nologo=true&model=flux`;
+
+        const response = await fetch(url);
+
+        if (!response.ok ||!response.headers.get('content-type')?.startsWith('image')) {
+            return msg.reply('Figura bloqueada 😢 Tenta "cachorro feliz cartoon"');
+        }
+
+        const buffer = await response.arrayBuffer();
+        const attachment = new AttachmentBuilder(Buffer.from(buffer), { name: 'figura-jarves.png' });
+
+        await msg.reply({
+            content: 'Tua figura tá pronta LS 👇 Salva e usa como sticker',
+            files: [attachment]
+        });
+
+    } catch (error) {
+        msg.reply('Deu ruim pra criar a figura 😢');
+        console.log(error);
+    }
+}
 
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
 
