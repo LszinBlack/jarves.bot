@@ -131,6 +131,29 @@ if (msg.content.startsWith('!anive ')) {const nome = msg.content.slice(7).trim()
     await msg.reply(aleatoria);
 }
 
+// COMANDO!ls - PERFIL DO USUÁRIO
+if (msg.content === '!Criador) {
+    const user = msg.author;
+    const member = msg.member;
+
+    const embed = {
+        color: 0xFF0000, // Vermelho brabo
+        title: `⚡ Perfil do ${user.username}`,
+        description: `**LS que me criou** 👑`, // ← AQUI TÁ A MSG
+        thumbnail: { url: user.displayAvatarURL({ dynamic: true, size: 256 }) },
+        fields: [
+            { name: 'Nome', value: `${user.tag}`, inline: true },
+            { name: 'ID', value: `${user.id}`, inline: true },
+            { name: 'Conta criada em', value: `<t:${Math.floor(user.createdTimestamp / 1000)}:D>`, inline: false },
+            { name: 'Entrou no server em', value: `<t:${Math.floor(member.joinedTimestamp / 1000)}:R>`, inline: false }
+        ],
+        footer: { text: 'Jarves Bot - Feito pelo LS', icon_url: user.displayAvatarURL({ dynamic: true }) },
+        timestamp: new Date()
+    };
+
+    await msg.reply({ embeds: [embed] });
+}
+
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
 
 client.login(process.env.TOKEN); 
