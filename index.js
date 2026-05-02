@@ -128,19 +128,6 @@ if (msg.content.startsWith('!anive ')) {
         `Feliz aniversário **${nome}**! Que tu tenha loot lendário nesse novo ciclo! Meus parabéns! 🎁`
     ];
 
-    const aleatoria = frases[Math.floor(Math.random() * frases.length)];
-
-    const gifs = [
-        'https://media.tenor.com/7QOK3JKGZgUAAAAC/anime-happy.gif',
-        'https://media.tenor.com/X5yYcUqC1WcAAAAC/naruto-dancing.gif',
-        'https://media.tenor.com/QhOah2-i2QMAAAAC/anime-celebrate.gif'
-    ];
-
-    const gif = gifs[Math.floor(Math.random() * gifs.length)];
-
-    // MANDA SÓ 1 VEZ, COM TEXTO + LINK DO GIF
-    await msg.reply(`${aleatoria}\n${gif}`);}
-
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
 
 client.login(process.env.TOKEN); 
