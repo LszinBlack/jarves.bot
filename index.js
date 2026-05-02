@@ -116,8 +116,7 @@ if (msg.content.startsWith('!figura ')) {
 }
 
 // COMANDO!ANIVE PARABÉNS ANIVE 
-if (msg.content.startsWith('!anive ')) {
-    const nome = msg.content.slice(7).trim();
+if (msg.content.startsWith('!anive ')) {const nome = msg.content.slice(7).trim();
     if (!nome) return msg.reply('Fala o nome, LS: `!anive Lucas`');
 
     const frases = [
