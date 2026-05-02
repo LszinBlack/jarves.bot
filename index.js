@@ -125,7 +125,7 @@ if (msg.content.startsWith('!anive ')) {
         `Feliz aniversário **${nome}**! Hoje tu upou de nível! Meus parabéns! ⭐`,
         `Feliz aniversário **${nome}**! Que o poder do protagonismo esteja contigo! Meus parabéns! 💪`,
         `**${nome}**-kun, feliz aniversário! Mais um ano pra se tornar o mais forte! Meus parabéns! 🔥`,
-        `Feliz aniversário **${nome}**! Que tu tenha loot lendário nesse novo ciclo! Meus parabéns! 🎁`];
+        `Feliz aniversário **${nome}**! Que tu tenha loot lendário nesse novo ciclo! Meus parabéns! 🎁`];}
 
 }); // ← ESSE }); TEM QUE VIR AQUI, ANTES DO LOGIN
 
